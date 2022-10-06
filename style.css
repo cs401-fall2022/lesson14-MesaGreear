@@ -1,0 +1,43 @@
+:root{
+    background-color: darkgray;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+
+    margin: 0px 20px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    background-color: lightblue;
+}
+
+h1{
+    font-weight: bold;
+}
+
+.intro {
+    background-color: gray;
+}
+
+.intro > *{
+    margin: 10px;
+}
+
+.intro > h2 {
+    color: white;
+}
+
+.intro h3{
+    font: 15pt Arial;
+    color:antiquewhite;
+}
+
+.section p{
+    font: 12pt "Comic Sans MS";
+}
