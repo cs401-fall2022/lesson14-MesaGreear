@@ -77,3 +77,11 @@ img {
     color: antiquewhite;
     font: 13pt "Courier New";
 }
+
+.name {color: green}
+.gen {color: orange}
+.obj {color: skyblue}
+.var {color: yellow}
+.mtd {color: goldenrod}
+.con {color: aqua}
+.str {color:aquamarine}

@@ -46,17 +46,19 @@
           odio mi, ac congue sapien tincidunt vel.</p>
 
           <!-- TODO: Figure out how to 'decorate' code blocks -->
-          <div class="code">
-            public static void main(String[] args) { <br>
-              int[] y = generateArrayWithASingleTwentySomewhereInIt(genInt((int)Math.pow(10, 8), Integer.MAX_VALUE));<br>
-              int x = 0;<br>
+          <code class="code">
+            <div>
+              <span class="gen">public static void</span> <span class="name">main</span>(<span class="obj">String</span>[] <span class="var">args</span>) { <br>
+              <span class="gen">int[]</span> <span class="var">y</span> = <span class="mtd">generateArrayWithASingleTwentySomewhereInIt</span>(<span class="mtd">genInt</span>((<span class="gen">int</span>)<span class="obj">Math</span>.<span class="mtd">pow</span>(10, 8), <span class="obj">Integer</span>.<span class="con">MAX_VALUE</span>));<br>
+              <span class="gen">int</span> <span class="var">x</span> = 0;<br>
               <br>
-              while(y[x] != 20)<br>
-                x = genInt(0, y.length);<br>
+              <span class="gen">while</span>(<span class="var">y</span>[<span class="var">x</span>] != 20)<br>
+              <span class="var">x</span> = <span class="mtd">genInt</span>(0, <span class="var">y</span>.<span class="con">length</span>);<br>
               <br>
-              System.out.println("Found the 20! It was at index: " + x + "!");<br>
+              <span class="obj">System</span>.<span class="con">out</span>.<span class="mtd">println</span>(<span class="str">"Found the 20! It was at index: "</span> + <span class="var">x</span> + <span class="str">"!"</span>);<br>
               }
-          </div>
+            </div>
+          </code>
       </div>
     </div>
 
