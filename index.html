@@ -44,6 +44,19 @@
           Suspendisse ornare dolor vitae lacus consectetur viverra. Fusce sollicitudin aliquam dictum. Duis
           sit amet dolor sed tellus eleifend semper eget ut arcu. Nunc finibus efficitur auctor. In egestas
           odio mi, ac congue sapien tincidunt vel.</p>
+
+          <!-- TODO: Figure out how to 'decorate' code blocks -->
+          <div class="code">
+            public static void main(String[] args) { <br>
+              int[] y = generateArrayWithASingleTwentySomewhereInIt(genInt((int)Math.pow(10, 8), Integer.MAX_VALUE));<br>
+              int x = 0;<br>
+              <br>
+              while(y[x] != 20)<br>
+                x = genInt(0, y.length);<br>
+              <br>
+              System.out.println("Found the 20! It was at index: " + x + "!");<br>
+              }
+          </div>
       </div>
     </div>
 
