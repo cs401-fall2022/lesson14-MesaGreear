@@ -2,14 +2,6 @@
     background-color: rgb(15, 15, 20);
 }
 
-.container{
-    display: flex;
-    flex-direction: column;
-
-    gap: 30px;
-    margin: 0px 20px;
-}
-
 nav {
     display: flex;
     align-items: center;
@@ -22,16 +14,27 @@ h1{
     color: white;
     font: 25pt Helvetica;
     font-weight: bold;
-    margin: 20px;
+    position: relative;
+    margin: 20px 70px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    margin: 0px 70px;
 }
 
 /* Section formatting (Introduction, The Basics, etc.) */
 .section {
     background-color: rgb(25, 30, 35);
+    border-radius: 15px 15px;
+    box-shadow: 7px 15px;
 }
 
-.section > *{
-    margin: 10px;
+.section > .topic, .section > h2{
+    margin: 20px 10px;
 }
 
 .section > h2 {
@@ -40,12 +43,12 @@ h1{
 }
 
 /* Topic formatting (Types, Non-exception Failures, etc.; inside a Section) */
-.topic h3{
+.topic > h3{
     font: 17pt Verdana;
     color: white;
 }
 
-.topic p{
+.topic > p{
     color: white;
     font: 12pt "Arial";
 }
