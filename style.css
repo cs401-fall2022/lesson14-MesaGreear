@@ -1,11 +1,12 @@
 :root{
-    background-color: rgb(25, 25, 40);
+    background-color: rgb(15, 15, 20);
 }
 
 .container{
     display: flex;
     flex-direction: column;
 
+    gap: 30px;
     margin: 0px 20px;
 }
 
@@ -21,11 +22,12 @@ h1{
     color: white;
     font: 25pt Helvetica;
     font-weight: bold;
+    margin: 20px;
 }
 
 /* Section formatting (Introduction, The Basics, etc.) */
 .section {
-    background-color: rgb(45, 40, 40);
+    background-color: rgb(25, 30, 35);
 }
 
 .section > *{
@@ -37,9 +39,9 @@ h1{
     color: white;
 }
 
-/* Topic formatting (Types, Non-exception Failures; inside a Section) */
+/* Topic formatting (Types, Non-exception Failures, etc.; inside a Section) */
 .topic h3{
-    font: 15pt Verdana;
+    font: 17pt Verdana;
     color: white;
 }
 
