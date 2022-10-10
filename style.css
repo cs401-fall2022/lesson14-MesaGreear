@@ -1,5 +1,5 @@
 :root{
-    background-color: darkgray;
+    background-color: rgb(25, 25, 40);
 }
 
 .container{
@@ -14,30 +14,36 @@ nav {
     align-items: center;
     gap: 30px;
 
-    background-color: lightblue;
+    background-color: rgb(80, 150, 250);
 }
 
 h1{
+    color: white;
+    font: 25pt Helvetica;
     font-weight: bold;
 }
 
-.intro {
-    background-color: gray;
+/* Section formatting (Introduction, The Basics, etc.) */
+.section {
+    background-color: rgb(45, 40, 40);
 }
 
-.intro > *{
+.section > *{
     margin: 10px;
 }
 
-.intro > h2 {
+.section > h2 {
+    font-family: Verdana;
     color: white;
 }
 
-.intro h3{
-    font: 15pt Arial;
-    color:antiquewhite;
+/* Topic formatting (Types, Non-exception Failures; inside a Section) */
+.topic h3{
+    font: 15pt Verdana;
+    color: white;
 }
 
-.section p{
-    font: 12pt "Comic Sans MS";
+.topic p{
+    color: white;
+    font: 12pt "Arial";
 }
