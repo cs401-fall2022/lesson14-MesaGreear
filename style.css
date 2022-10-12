@@ -57,7 +57,7 @@ img {
     color: white;
 }
 
-.topic > p{
+.topic > p, .topic > ul{
     color: white;
     font: 12pt Arial;
 }
