@@ -28,76 +28,211 @@
   <!--Container, encapsulates everything on the page except for the Nav Bar & Title-->
   <div class="container">
 
-    <div class="section">
+    <div class="section" id="intro">
       <h2>Introduction</h2>
 
       <div class="topic">
-        <h3>Types</h3>
-        <p>What on Earth are types? cause idk</p>
+        <p>TypeScript stands in an unusual relationship to JavaScript. TypeScript offers all of JavaScript’s features,
+          and an additional layer on top of these: TypeScript’s type system.</p>
+        <p>For example, JavaScript provides language primitives like string and number, but it doesn’t check that you’ve
+          consistently assigned these. TypeScript does.</p>
+        <p>This means that your existing working JavaScript code is also TypeScript code. The main benefit of TypeScript
+          is that it can highlight unexpected behavior in your code, lowering the chance of bugs.</p>
+        <p>This tutorial provides a brief overview of TypeScript, focusing on its type system</p>
       </div>
 
       <div class="topic">
-        <h3>Something more about Types</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit lacinia bibendum.
-          Etiam tortor quam, bibendum eu semper eget, laoreet in arcu. Vestibulum dui arcu, vestibulum ut
-          pellentesque ut, accumsan at leo. Vestibulum nec imperdiet elit. Nunc molestie varius pretium.
-          Suspendisse ornare dolor vitae lacus consectetur viverra. Fusce sollicitudin aliquam dictum. Duis
-          sit amet dolor sed tellus eleifend semper eget ut arcu. Nunc finibus efficitur auctor. In egestas
-          odio mi, ac congue sapien tincidunt vel.</p>
+        <h3>Types by Inference</h3>
+        <p>TypeScript knows the JavaScript language and will generate types for you in many cases. For example in
+          creating a variable and assigning it to a particular value, TypeScript will use the value as its type.</p>
 
-          <!-- TODO: Figure out how to 'decorate' code blocks -->
-          <code class="code">
-            <div>
-              <span class="gen">public static void</span> <span class="name">main</span>(<span class="obj">String</span>[] <span class="var">args</span>) { <br>
-              <span class="gen">int[]</span> <span class="var">y</span> = <span class="mtd">generateArrayWithASingleTwentySomewhereInIt</span>(<span class="mtd">genInt</span>((<span class="gen">int</span>)<span class="obj">Math</span>.<span class="mtd">pow</span>(10, 8), <span class="obj">Integer</span>.<span class="con">MAX_VALUE</span>));<br>
-              <span class="gen">int</span> <span class="var">x</span> = 0;<br>
-              <br>
-              <span class="gen">while</span>(<span class="var">y</span>[<span class="var">x</span>] != 20)<br>
-              <span class="var">x</span> = <span class="mtd">genInt</span>(0, <span class="var">y</span>.<span class="con">length</span>);<br>
-              <br>
-              <span class="obj">System</span>.<span class="con">out</span>.<span class="mtd">println</span>(<span class="str">"Found the 20! It was at index: "</span> + <span class="var">x</span> + <span class="str">"!"</span>);<br>
-              }
-            </div>
-          </code>
+        <code class="code">
+          let helloWorld = "Hello World";
+        </code>
+
+        <p>By understanding how JavaScript works, TypeScript can build a type-system that accepts JavaScript code but
+          has types. This offers a type-system without needing to add extra characters to make types explicit in your
+          code. That’s how TypeScript knows that helloWorld is a string in the above example.</p>
+        <p>You may have written JavaScript in Visual Studio Code, and had editor auto-completion. Visual Studio Code
+          uses TypeScript under the hood to make it easier to work with JavaScript.</p>
+      </div>
+
+      <div class="topic">
+        <h3>Defining Types</h3>
+        <p>You can use a wide variety of design patterns in JavaScript. However, some design patterns make it difficult
+          for types to be inferred automatically (for example, patterns that use dynamic programming). To cover these
+          cases, TypeScript supports an extension of the JavaScript language, which offers places for you to tell
+          TypeScript what the types should be.</p>
+        <p>For example, to create an object with an inferred type which includes name: string and id: number, you can
+          write:</p>
+
+
+        <code class="code">
+            const user = { <br>
+            name: "Hayes", <br>
+            id: 0, <br>
+            };
+        </code>
+
+        <p>You can explicitly describe this object’s shape using an interface declaration:</p>
+
+        <code class="code">
+          interface User { <br>
+          name: string;<br>
+          id: number;<br>
+          }
+        </code>
+
+        <p>You can then declare that a JavaScript object conforms to the shape of your new interface by using syntax
+          like : TypeName after a variable declaration:</p>
+
+        <code class="code">
+          const user: User = { <br>
+            name: "Hayes", <br>
+            id: 0, <br>
+          };
+        </code>
+
+        <p>If you provide an object that doesn’t match the interface you have provided, TypeScript will warn you:</p>
+
+        <code class="code">
+          <div>
+            interface User {<br>
+              name: string;<br>
+              id: number;<br>
+            }<br>
+            <br>
+            const user: User = {<br>
+              username: "Hayes",<br>
+              <span style="background-color: darkred">Type '{ username: string; id: number; }' is not assignable to type 'User'.<br>
+              Object literal may only specify known properties, and 'username' does not exist in type 'User'.<br> </span>
+              id: 0,<br>
+            };
+          </div>
+        </code>
+
+        <p>Since JavaScript supports classes and object-oriented programming, so does TypeScript. You can use an
+          interface declaration with classes:</p>
+
+        <code class="code">
+          interface User {<br>
+            name: string;<br>
+            id: number;<br>
+          }<br>
+          <br>
+          class UserAccount {<br>
+            name: string;<br>
+            id: number;<br>
+            <br>
+            constructor(name: string, id: number) {<br>
+              this.name = name;<br>
+              this.id = id;<br>
+            }<br>
+          }<br>
+          <br>
+          const user: User = new UserAccount("Murphy", 1);
+        </code>
+
+        <p>You can use interfaces to annotate parameters and return values to functions</p>
+
+        <code class="code">
+          function getAdminUser(): User {<br>
+            //...<br>
+          }<br>
+           
+          function deleteUser(user: User) {<br>
+            // ...<br>
+          }<br>
+        </code>
+
+        <p>There is already a small set of primitive types available in JavaScript: boolean, bigint, null, number,
+          string, symbol, and undefined, which you can use in an interface. TypeScript extends this list with a few
+          more, such as any (allow anything), unknown (ensure someone using this type declares what the type is), never
+          (it’s not possible that this type could happen), and void (a function which returns undefined or has no return
+          value)</p>
+        <p>You’ll see that there are two syntaxes for building types: Interfaces and Types. You should prefer interface.
+          Use type when you need specific features</p>
+
       </div>
     </div>
 
-    <div class="section">
+    <div class="section" id="basics">
       <h2>The Basics</h2>
 
       <div class="topic">
+        <p>Each and every value in JavaScript has a set of behaviors you can observe from running different operations. That sounds abstract, but as a quick example, consider some operations we might run on a variable named message.</p>
+      
+        <code class="code">
+          // Accessing the property 'toLowerCase' <br>
+          // on 'message' and then calling it <br>
+          message.toLowerCase(); <br>
+          // Calling 'message' <br>
+          message();
+        </code>
+
+        <p>If we break this down, the first runnable line of code accesses a property called toLowerCase and then calls it. The second one tries to call message directly.</p>
+        <p>But assuming we don’t know the value of message - and that’s pretty common - we can’t reliably say what results we’ll get from trying to run any of this code. The behavior of each operation depends entirely on what value we had in the first place.</p>
+
+        <ul>
+          <li>Is message callable?</li>
+          <li>Does it have a property called toLowerCase on it?</li>
+          <li>If it does, is toLowerCase even callable?</li>
+          <li>If both of these values are callable, what do they return?</li>
+        </ul>
+
+        <p>The answers to these questions are usually things we keep in our heads when we write JavaScript, and we have to hope we got all the details right.</p>
+        <p>Let’s say message was defined in the following way</p>
+
+        <code class="code">
+          const message = "Hello World!";
+        </code>
+
+        <p>As you can probably guess, if we try to run message.toLowerCase(), we’ll get the same string only in lower-case.</p>
+        <p>What about that second line of code? If you’re familiar with JavaScript, you’ll know this fails with an exception:</p>
+
+        <code class="code">
+          TypeError: message is not a function
+        </code>
+
+        <p>It’d be great if we could avoid mistakes like this.</p>
+        <p>When we run our code, the way that our JavaScript runtime chooses what to do is by figuring out the type of the value - what sorts of behaviors and capabilities it has. That’s part of what that TypeError is alluding to - it’s saying that the string "Hello World!" cannot be called as a function.</p>
+        <p>For some values, such as the primitives string and number, we can identify their type at runtime using the typeof operator. But for other things like functions, there’s no corresponding runtime mechanism to identify their types. For example, consider this function:</p>
+
+        <code class="code">
+          function fn(x){ <br>
+          return x.flip(); <br>
+          } <br>
+        </code>
+
+        <p>We can observe by reading the code that this function will only work if given an object with a callable flip property, but JavaScript doesn’t surface this information in a way that we can check while the code is running. The only way in pure JavaScript to tell what fn does with a particular value is to call it and see what happens. This kind of behavior makes it hard to predict what code will do before it runs, which means it’s harder to know what your code is going to do while you’re writing it</p>
+        <p>Seen in this way, a type is the concept of describing which values can be passed to fn and which will crash. JavaScript only truly provides dynamic typing - running the code to see what happens.</p>
+        <p>The alternative is to use a static type system to make predictions about what code is expected before it runs.</p>
+      </div>
+
+      <div class="topic">
         <h3>Static type-checking</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce accumsan magna vel sapien dapibus consequat.
-          Suspendisse suscipit efficitur velit a malesuada. Nam sodales neque non molestie tristique. Pellentesque at
-          tempor ex. Sed quis tristique ipsum. Pellentesque in fringilla eros, non molestie lacus. Phasellus vitae nisl
-          eu libero commodo finibus vitae vitae libero. Nam placerat enim eu turpis congue ullamcorper. Orci varius
-          natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque luctus massa vitae ultrices
-          iaculis.</p>
 
-        <div class="center">
-          <img src="imgs/heUsedShaders.jpg" alt="MineCraft with shaders" style="height: 400px">
-        </div>
+        <p>Think back to that TypeError we got earlier from trying to call a string as a function. Most people don’t like to get any sorts of errors when running their code - those are considered bugs! And when we write new code, we try our best to avoid introducing new bugs.</p>
+        <p>If we add just a bit of code, save our file, re-run the code, and immediately see the error, we might be able to isolate the problem quickly; but that’s not always the case. We might not have tested the feature thoroughly enough, so we might never actually run into a potential error that would be thrown! Or if we were lucky enough to witness the error, we might have ended up doing large refactorings and adding a lot of different code that we’re forced to dig through.</p>
+        <p>Ideally, we could have a tool that helps us find these bugs before our code runs. That’s what a static type-checker like TypeScript does. Static types systems describe the shapes and behaviors of what our values will be when we run our programs. A type-checker like TypeScript uses that information and tells us when things might be going off the rails.</p>
 
-        <p>Aliquam convallis interdum neque a ullamcorper. Sed a pretium purus, a tempor purus. In aliquam suscipit
-          dolor, ac vestibulum ipsum ullamcorper vitae. Curabitur condimentum magna ut felis hendrerit, pharetra
-          bibendum est elementum. Sed malesuada augue vel est egestas pellentesque. Aenean commodo, dui sit amet laoreet
-          vulputate, lorem metus iaculis quam, sed dapibus risus massa a leo. Orci varius natoque penatibus et magnis
-          dis parturient montes, nascetur ridiculus mus. Morbi non ex quis velit elementum rhoncus. Mauris ut urna a
-          libero malesuada tincidunt. Vestibulum dictum at nisl vel fermentum. Ut vitae facilisis eros, tristique
-          condimentum tellus. Morbi condimentum dui sit amet nisi tristique, ac congue mauris condimentum. Praesent
-          condimentum et arcu in imperdiet.</p>
+        <code class="code">
+          <div>
+            const message = "hello!"; <br>
+            <br>
+            message(); <br>
+            <span style="background-color: darkred">This expression is not callable. <br>
+              Type 'String' has no call signatures.</span>
+          </div>
+        </code>
+
+        <p>Running that last sample with TypeScript will give us an error message before we run the code in the first place.</p>
       </div>
 
       <div class="topic">
         <h3>Non-exception Failures</h3>
-        <p>Phasellus non tincidunt sapien, ut aliquet velit. Curabitur a eros sit amet ex dictum dignissim. Nam eget
-          malesuada felis, sed tristique risus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-          inceptos himenaeos. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-          egestas. Maecenas lobortis pretium nibh, sed ultricies augue congue non. Integer bibendum imperdiet massa ac
-          dapibus. Proin suscipit vestibulum dignissim. Aliquam erat volutpat. Pellentesque habitant morbi tristique
-          senectus et netus et malesuada fames ac turpis egestas. Suspendisse nec semper lorem. Nulla sodales elit eu
-          turpis commodo sagittis. In rhoncus est vitae lacus interdum, quis sodales risus volutpat. Fusce euismod
-          lectus eu eros posuere aliquam nec vitae mi. Praesent rutrum non tellus non scelerisque</p>
+
+        <p></p>
       </div>
     </div>
 

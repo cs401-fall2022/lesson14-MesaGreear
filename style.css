@@ -48,6 +48,10 @@ img {
 }
 
 /* Topic formatting (Types, Non-exception Failures, etc.; inside a Section) */
+.topic{
+    margin-bottom: 40px;;
+}
+
 .topic > h3{
     font: 17pt Verdana;
     color: white;
@@ -70,6 +74,7 @@ img {
     border: 1px solid var(--softBlue);
     border-radius: 5px;
     padding: 20px;
+    margin-bottom: 30px;
 
     display: flex;
     flex-direction: column;
@@ -78,6 +83,7 @@ img {
     font: 13pt "Courier New";
 }
 
+/*
 .name {color: green}
 .gen {color: orange}
 .obj {color: skyblue}
@@ -85,3 +91,4 @@ img {
 .mtd {color: goldenrod}
 .con {color: aqua}
 .str {color:aquamarine}
+*/
