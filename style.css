@@ -3,14 +3,6 @@
     background-color: rgb(15, 15, 20);
 }
 
-nav {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-
-    background-color: var(--softBlue);
-}
-
 h1 {
     color: white;
     font: 25pt Helvetica;
@@ -29,6 +21,28 @@ img {
     gap: 30px;
     position: relative;
     margin: 0px 70px;
+}
+
+/* Navigation Bar formatting */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    background-color: var(--softBlue);
+}
+
+nav > h2{
+    font: 20pt "Verdana";
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+nav > a{
+    font: 15pt "Arial";
+    font-weight: bolder;
+    text-decoration: none;
+    color: White;
 }
 
 /* Section formatting (Introduction, The Basics, etc.) */
