@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <title>TypeScript for JavaScript Programmers</title>
@@ -20,8 +20,20 @@
   <nav>
     <h2>TypeScript</h2>
 
-    <a href="#intro">Introduction</a>
-    <a href="#basics">The Basics</a>
+    <div class="dropdown">
+      <a href="#intro">Introduction</a>
+      <div class="dropdownContent">
+        <a href="#intro1">Types by Inference</a>
+        <a href="#intro2">Defining Types</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#basics">The Basics</a>
+      <div class="dropdownContent">
+        <a href="#basics1">Static type-checking</a>
+        <a href="#basics2">Non-exception Failures</a>
+      </div>
+    </div>
   </nav>
 
   <h1>TypeScript for JavaScript Programmers</h1>
@@ -42,7 +54,7 @@
         <p>This tutorial provides a brief overview of TypeScript, focusing on its type system</p>
       </div>
 
-      <div class="topic">
+      <div class="topic" id="intro1">
         <h3>Types by Inference</h3>
         <p>TypeScript knows the JavaScript language and will generate types for you in many cases. For example in
           creating a variable and assigning it to a particular value, TypeScript will use the value as its type.</p>
@@ -58,7 +70,7 @@
           uses TypeScript under the hood to make it easier to work with JavaScript.</p>
       </div>
 
-      <div class="topic">
+      <div class="topic" id="intro2">
         <h3>Defining Types</h3>
         <p>You can use a wide variety of design patterns in JavaScript. However, some design patterns make it difficult
           for types to be inferred automatically (for example, patterns that use dynamic programming). To cover these
@@ -228,7 +240,7 @@
           runs.</p>
       </div>
 
-      <div class="topic">
+      <div class="topic" id="basics1">
         <h3>Static type-checking</h3>
 
         <p>Think back to that TypeError we got earlier from trying to call a string as a function. Most people don’t
@@ -258,7 +270,7 @@
           place.</p>
       </div>
 
-      <div class="topic">
+      <div class="topic" id="basics2">
         <h3>Non-exception Failures</h3>
 
         <p></p>
