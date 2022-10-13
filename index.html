@@ -43,6 +43,9 @@
   <!--Container, encapsulates everything on the page except for the Nav Bar & Title-->
   <div class="container">
 
+    <!--====================================================================================================================-->
+    <!--=================================================== INTRODUCTION ===================================================-->
+    <!--====================================================================================================================-->
     <div class="section" id="intro">
       <h2>Introduction</h2>
 
@@ -149,8 +152,10 @@
 
         <p>There is already a small set of primitive types available in JavaScript: boolean, bigint, null, number,
           string, symbol, and undefined, which you can use in an interface. TypeScript extends this list with a few
-          more, such as <strong>any</strong> (allow anything), <strong>unknown</strong> (ensure someone using this type declares what the type is), <strong>never</strong>
-          (it’s not possible that this type could happen), and <strong>void</strong> (a function which returns undefined or has no return
+          more, such as <strong>any</strong> (allow anything), <strong>unknown</strong> (ensure someone using this type
+          declares what the type is), <strong>never</strong>
+          (it’s not possible that this type could happen), and <strong>void</strong> (a function which returns undefined
+          or has no return
           value)</p>
         <p>You’ll see that there are two syntaxes for building types: Interfaces and Types. You should prefer interface.
           Use type when you need specific features</p>
@@ -159,7 +164,8 @@
       <div class="topic" id="intro3">
         <h3>Composing Types</h3>
 
-        <p>With TypeScript, complex types can be created by combining simple ones using <strong>unions</strong> and <strong>generics</strong>.</p>
+        <p>With TypeScript, complex types can be created by combining simple ones using <strong>unions</strong> and
+          <strong>generics</strong>.</p>
 
         <h4>Unions</h4>
 
@@ -192,7 +198,8 @@
 
         <h4>Generics</h4>
 
-        <p>Generics provide variables to types. A common example is an array. An array without generics could contain anything. An array with generics can describe the values that the array contains.</p>
+        <p>Generics provide variables to types. A common example is an array. An array without generics could contain
+          anything. An array with generics can describe the values that the array contains.</p>
 
         <code class="code">
           interface Backpack&ltType&gt { <br>
@@ -216,8 +223,9 @@
       <div class="topic" id="intro4">
         <h3>Structural Type System</h3>
 
-        <p>I TypeScript, if two objects have the same shape, they are considered to be of the same type.</p>
-        <p>In the code below, <em>point</em> is never declared to be of Point type, but it has the same shape as a Point type, so the code passes.</p>
+        <p>In TypeScript, if two objects have the same shape, they are considered to be of the same type.</p>
+        <p>In the code below, <em>point</em> is never declared to be of Point type, but it has the same shape as a Point
+          type, so the code passes.</p>
 
         <code class="code">
           interface Point { <br>
@@ -234,9 +242,14 @@
           logPoint(point);
         </code>
 
-        <p>There is no difference between how classes and objects conform to shapes. If the object or class has all the required properties, TypeScript will say they match, regardless of the implementation details.</p>
+        <p>There is no difference between how classes and objects conform to shapes. If the object or class has all the
+          required properties, TypeScript will say they match, regardless of the implementation details.</p>
       </div>
     </div>
+
+    <!--====================================================================================================================-->
+    <!--====================================================== BASICS ======================================================-->
+    <!--====================================================================================================================-->
 
     <div class="section" id="basics">
       <h2>The Basics</h2>
