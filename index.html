@@ -25,6 +25,8 @@
       <div class="dropdownContent">
         <a href="#intro1">Types by Inference</a>
         <a href="#intro2">Defining Types</a>
+        <a href="#intro3">Composing Types</a>
+        <a href="#intro4">Structural Type System</a>
       </div>
     </div>
     <div class="dropdown">
@@ -47,38 +49,27 @@
       <div class="topic">
         <p>TypeScript stands in an unusual relationship to JavaScript. TypeScript offers all of JavaScript’s features,
           and an additional layer on top of these: TypeScript’s type system.</p>
-        <p>For example, JavaScript provides language primitives like string and number, but it doesn’t check that you’ve
-          consistently assigned these. TypeScript does.</p>
-        <p>This means that your existing working JavaScript code is also TypeScript code. The main benefit of TypeScript
-          is that it can highlight unexpected behavior in your code, lowering the chance of bugs.</p>
-        <p>This tutorial provides a brief overview of TypeScript, focusing on its type system</p>
+        <p>Using types, TypeScript requires consistent assignment of variables in your code. This helps to highlight
+          unexpected behavior in your code, lowering the chance of bugs.</p>
       </div>
 
       <div class="topic" id="intro1">
         <h3>Types by Inference</h3>
-        <p>TypeScript knows the JavaScript language and will generate types for you in many cases. For example in
-          creating a variable and assigning it to a particular value, TypeScript will use the value as its type.</p>
+
+        <p>The code below assigns helloWorld to a string "Hello World". This code works in both JavaScript and
+          TypeScript, but in TypeScript helloWorld is specifically a string type now. This auto assignment of the
+          variable's type helps to reduces extra characters and code to make types explicit.</p>
 
         <code class="code">
           let helloWorld = "Hello World";
         </code>
-
-        <p>By understanding how JavaScript works, TypeScript can build a type-system that accepts JavaScript code but
-          has types. This offers a type-system without needing to add extra characters to make types explicit in your
-          code. That’s how TypeScript knows that helloWorld is a string in the above example.</p>
-        <p>You may have written JavaScript in Visual Studio Code, and had editor auto-completion. Visual Studio Code
-          uses TypeScript under the hood to make it easier to work with JavaScript.</p>
       </div>
 
       <div class="topic" id="intro2">
         <h3>Defining Types</h3>
-        <p>You can use a wide variety of design patterns in JavaScript. However, some design patterns make it difficult
-          for types to be inferred automatically (for example, patterns that use dynamic programming). To cover these
-          cases, TypeScript supports an extension of the JavaScript language, which offers places for you to tell
-          TypeScript what the types should be.</p>
+        <p>TypeScript offers a variety of ways to define a variables type.</p>
         <p>For example, to create an object with an inferred type which includes name: string and id: number, you can
           write:</p>
-
 
         <code class="code">
             const user = { <br>
@@ -109,19 +100,17 @@
         <p>If you provide an object that doesn’t match the interface you have provided, TypeScript will warn you:</p>
 
         <code class="code">
-          <div>
-            interface User {<br>
-              name: string;<br>
-              id: number;<br>
-            }<br>
-            <br>
-            const user: User = {<br>
-              username: "Hayes",<br>
-              <span style="background-color: darkred">Type '{ username: string; id: number; }' is not assignable to type 'User'.<br>
-              Object literal may only specify known properties, and 'username' does not exist in type 'User'.<br> </span>
-              id: 0,<br>
-            };
-          </div>
+          interface User {<br>
+            name: string;<br>
+            id: number;<br>
+          }<br>
+          <br>
+          const user: User = {<br>
+            username: "Hayes",<br>
+            <span style="background-color: darkred">Type '{ username: string; id: number; }' is not assignable to type 'User'.<br>
+            Object literal may only specify known properties, and 'username' does not exist in type 'User'.<br> </span>
+            id: 0,<br>
+          };
         </code>
 
         <p>Since JavaScript supports classes and object-oriented programming, so does TypeScript. You can use an
@@ -160,12 +149,92 @@
 
         <p>There is already a small set of primitive types available in JavaScript: boolean, bigint, null, number,
           string, symbol, and undefined, which you can use in an interface. TypeScript extends this list with a few
-          more, such as any (allow anything), unknown (ensure someone using this type declares what the type is), never
-          (it’s not possible that this type could happen), and void (a function which returns undefined or has no return
+          more, such as <strong>any</strong> (allow anything), <strong>unknown</strong> (ensure someone using this type declares what the type is), <strong>never</strong>
+          (it’s not possible that this type could happen), and <strong>void</strong> (a function which returns undefined or has no return
           value)</p>
         <p>You’ll see that there are two syntaxes for building types: Interfaces and Types. You should prefer interface.
           Use type when you need specific features</p>
+      </div>
 
+      <div class="topic" id="intro3">
+        <h3>Composing Types</h3>
+
+        <p>With TypeScript, complex types can be created by combining simple ones using <strong>unions</strong> and <strong>generics</strong>.</p>
+
+        <h4>Unions</h4>
+
+        <p>Unions allow creation of a type that can be one of many types.</p>
+        <p>A popular use of unions is to describe string or number literals, similar to that of Enum's in Java.</p>
+
+        <code class="code">
+          type WindowStates = "open" | "closed" | "minimized"; <br>
+          type LockStates = "locked" | "unlocked"; <br>
+          type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9; 
+        </code>
+
+        <p>Unions also provide a way to handle different types, like for example being either an array or a string.</p>
+
+        <code class="code">
+          function getLength(obj: string | string[]) { <br>
+            return obj.length; <br>
+          } 
+        </code>
+
+        <p>To learn the type of a variable, use <strong>typeof</strong>.</p>
+
+        <code class="code">
+          function wrapInArray(obj: string | string[]) { <br>
+            if (typeof obj === "string") <br>
+              return [obj]; <br>
+            return obj; <br>
+          }
+        </code>
+
+        <h4>Generics</h4>
+
+        <p>Generics provide variables to types. A common example is an array. An array without generics could contain anything. An array with generics can describe the values that the array contains.</p>
+
+        <code class="code">
+          interface Backpack&ltType&gt { <br>
+            add: (obj: Type) =&gt void; <br>
+            get: () =&gt Type; <br>
+          } <br>
+          <br>
+          // This line is a shortcut to tell TypeScript there is a <br>
+          // constant called `backpack`, and to not worry about where it came from. <br>
+          declare const backpack: Backpack&ltstring&gt; <br>
+            <br>
+          // object is a string, because we declared it above as the variable part of Backpack. <br>
+          const object = backpack.get(); <br>
+          <br>
+          // Since the backpack variable is a string, you can't pass a number to the add function. <br>
+          backpack.add(23); <br>
+          <span style="background-color: darkred">Argument of type 'number' is not assignable to parameter of type 'string'.</span>
+        </code>
+      </div>
+
+      <div class="topic" id="intro4">
+        <h3>Structural Type System</h3>
+
+        <p>I TypeScript, if two objects have the same shape, they are considered to be of the same type.</p>
+        <p>In the code below, <em>point</em> is never declared to be of Point type, but it has the same shape as a Point type, so the code passes.</p>
+
+        <code class="code">
+          interface Point { <br>
+            x: number; <br>
+            y: number; <br>
+          } <br>
+          <br>
+          function logPoint(p: Point) { <br>
+            console.log(`${p.x}, ${p.y}`); <br>
+          } <br>
+          <br>
+          // logs "12, 26" <br>
+          const point = { x: 12, y: 26 }; <br>
+          logPoint(point);
+        </code>
+
+        <p>There is no difference between how classes and objects conform to shapes. If the object or class has all the required properties, TypeScript will say they match, regardless of the implementation details.</p>
       </div>
     </div>
 
@@ -257,13 +326,11 @@
           things might be going off the rails.</p>
 
         <code class="code">
-          <div>
-            const message = "hello!"; <br>
-            <br>
-            message(); <br>
-            <span style="background-color: darkred">This expression is not callable. <br>
-              Type 'String' has no call signatures.</span>
-          </div>
+          const message = "hello!"; <br>
+          <br>
+          message(); <br>
+          <span style="background-color: darkred">This expression is not callable. <br>
+            Type 'String' has no call signatures.</span>
         </code>
 
         <p>Running that last sample with TypeScript will give us an error message before we run the code in the first

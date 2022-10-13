@@ -75,8 +75,13 @@ nav a:hover{
     z-index: 1;
 }
 
-.dropdownContent > a{
+.dropdownContent > a {
+    padding: 5px;
     font: 12pt Arial;
+}
+
+.dropdownContent > a:hover {
+    background-color: var(--softBlue);
 }
 
 /* Section formatting (Introduction, The Basics, etc.) */
@@ -105,9 +110,18 @@ nav a:hover{
     color: white;
 }
 
+.topic > h4{
+    font: 14pt Verdana;
+    color: white;
+}
+
 .topic > p, .topic > ul{
     color: white;
     font: 12pt Arial;
+}
+
+.topic strong{
+    color: aqua;
 }
 
 /* anything inside a center tag will be centered */
