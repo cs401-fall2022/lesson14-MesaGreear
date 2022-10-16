@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>TypeScript for JavaScript Programmers - Template Example</title>
+  <!--Second style sheet might fix css not being applied on github.io site-->
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lesson14-MesaGreear/style.css">
+  <!--
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.19.1.css">
+  -->
+</head>
+
+<body>
+
+  <!--Navigation Bar-->
+  <nav>
+    <h2>TypeScript</h2>
+
+    <div class="dropdown">
+      <a href="#intro">Introduction</a>
+      <div class="dropdownContent">
+        <a href="#intro1">Types by Inference</a>
+        <a href="#intro2">Defining Types</a>
+        <a href="#intro3">Composing Types</a>
+        <a href="#intro4">Structural Type System</a>
+      </div>
+    </div>
+    <div class="dropdown" id="links">
+        <a class="nonClickable">Site Pages</a>
+        <div class="dropdownContent">
+            <a href="index.html">Intro to TypeScript</a>
+            <a href="templateExample.html">Template Example</a>
+        </div>
+    </div>
+  </nav>
+
+  <h1>TypeScript for JavaScript Programmers - Template Example</h1>
+
+  <!--Container, encapsulates everything on the page except for the Nav Bar & Title-->
+  <div class="container">
+
+    <!--====================================================================================================================-->
+    <!--=================================================== INTRODUCTION ===================================================-->
+    <!--====================================================================================================================-->
+    <div class="section" id="intro">
+      <h2>Introduction</h2>
+
+      <div class="topic">
+        <p>TypeScript stands in an unusual relationship to JavaScript. TypeScript offers all of JavaScript’s features,
+          and an additional layer on top of these: TypeScript’s type system.</p>
+        <p>Using types, TypeScript requires consistent assignment of variables in your code. This helps to highlight
+          unexpected behavior in your code, lowering the chance of bugs.</p>
+      </div>
+
+      <div class="topic" id="intro1">
+        <h3>Types by Inference</h3>
+
+        <p>The code below assigns helloWorld to a string "Hello World". This code works in both JavaScript and
+          TypeScript, but in TypeScript helloWorld is specifically a string type now. This auto assignment of the
+          variable's type helps to reduces extra characters and code to make types explicit.</p>
+
+        <code class="code">
+          let helloWorld = "Hello World";
+        </code>
+      </div>
+    </div>
+  </div>
+
+  <!--
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.19.1.js"></script>
+  <script src="js/test.js"></script>
+  -->
+
+</body>
+
+</html>
