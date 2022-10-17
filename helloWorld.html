@@ -2,16 +2,14 @@
 <html lang="en">
 
 <head>
+<meta charset="utf-8">
   <title>TypeScript for JavaScript Programmers - Template Example</title>
   <!--Second style sheet might fix css not being applied on github.io site-->
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/lesson14-MesaGreear/style.css">
-  <!--
-  <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.19.1.css">
-  -->
+  <!-- <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.19.1.css"> -->
 </head>
 
 <body>
@@ -21,33 +19,34 @@
     <h2>TypeScript</h2>
 
     <div class="dropdown">
-      <a href="#intro">Introduction</a>
+      <a href="#instructions">Instructions</a>
       <div class="dropdownContent">
-        <a href="#intro1">Types by Inference</a>
-        <a href="#intro2">Defining Types</a>
-        <a href="#intro3">Composing Types</a>
-        <a href="#intro4">Structural Type System</a>
+        <a href="#instructions1">Types by Inference</a>
+        <a href="#instructions2">Defining Types</a>
       </div>
+    </div>
+    <div class="dropdown">
+        <a href="#clickButton">Click the Button!</a>
     </div>
     <div class="dropdown" id="links">
         <a class="nonClickable">Site Pages</a>
         <div class="dropdownContent">
             <a href="index.html">Intro to TypeScript</a>
-            <a href="templateExample.html">Template Example</a>
+            <a href="helloWorld.html">Hello World</a>
         </div>
     </div>
   </nav>
 
-  <h1>TypeScript for JavaScript Programmers - Template Example</h1>
+  <h1>TypeScript for JavaScript Programmers - Hello World</h1>
 
   <!--Container, encapsulates everything on the page except for the Nav Bar & Title-->
   <div class="container">
 
     <!--====================================================================================================================-->
-    <!--=================================================== INTRODUCTION ===================================================-->
+    <!--=================================================== INSTRUCTIONS ===================================================-->
     <!--====================================================================================================================-->
-    <div class="section" id="intro">
-      <h2>Introduction</h2>
+    <div class="section" id="instructions">
+      <h2>Instructions</h2>
 
       <div class="topic">
         <p>TypeScript stands in an unusual relationship to JavaScript. TypeScript offers all of JavaScript’s features,
@@ -56,7 +55,7 @@
           unexpected behavior in your code, lowering the chance of bugs.</p>
       </div>
 
-      <div class="topic" id="intro1">
+      <div class="topic" id="instructions1">
         <h3>Types by Inference</h3>
 
         <p>The code below assigns helloWorld to a string "Hello World". This code works in both JavaScript and
@@ -68,6 +67,28 @@
         </code>
       </div>
     </div>
+
+    <!--====================================================================================================================-->
+    <!--=================================================== CLICK BUTTON ===================================================-->
+    <!--====================================================================================================================-->
+    <div class="section" id="clickButton">
+        <h2>Click the Button!</h2>
+  
+        <div class="topic">
+            <p>If you have followed the instructions above, then clicking the button below should change the background color
+            of this page to a wonderfully ugly green. Clicking it again will revert the color change.</p>
+          
+            <div class="center">
+                <button id="clickButtonsButton" onclick="turnBackgroundUglyGreen()">Click Me!</button>
+
+                <script type="module">
+                    import { turnBackgroundUglyGreen } from '/build/app.js';
+                    window.turnBackgroundUglyGreen = turnBackgroundUglyGreen;
+                </script>
+            </div>
+
+        </div>
+      </div>
   </div>
 
   <!--
