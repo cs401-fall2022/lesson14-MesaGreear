@@ -1,4 +1,12 @@
 /**
+ * Returns the String "Hello World"
+ * @returns String "Hello World"
+ */
+function helloWorld (): String{
+    return "Hello World";
+}
+
+/**
  * Alternates the background color of a website between a dark-purplish color and an
  * ugly green color. Intended to be used with 
  */
@@ -14,4 +22,4 @@ function turnBackgroundUglyGreen (){
     return 0;
 }
 
-export {turnBackgroundUglyGreen}
+export {helloWorld, turnBackgroundUglyGreen}
