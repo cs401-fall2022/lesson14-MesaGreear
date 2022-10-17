@@ -21,8 +21,9 @@
     <div class="dropdown">
       <a href="#instructions">Instructions</a>
       <div class="dropdownContent">
-        <a href="#instructions1">Types by Inference</a>
-        <a href="#instructions2">Defining Types</a>
+        <a href="#instructions1">Files</a>
+        <a href="#instructions2">Build</a>
+        <a href="#instructions3">Test</a>
       </div>
     </div>
     <div class="dropdown">
@@ -49,21 +50,95 @@
       <h2>Instructions</h2>
 
       <div class="topic">
-        <p>TypeScript stands in an unusual relationship to JavaScript. TypeScript offers all of JavaScript’s features,
-          and an additional layer on top of these: TypeScript’s type system.</p>
-        <p>Using types, TypeScript requires consistent assignment of variables in your code. This helps to highlight
-          unexpected behavior in your code, lowering the chance of bugs.</p>
+        <p>This is a Hello World page who's purpose it to show TypeScript in the browser and Jest unit testing.</p>
+        <p>While all this information is shown on this webpage, the steps below will need to be performed on a local
+          clone of this git repository.</p>
       </div>
 
       <div class="topic" id="instructions1">
-        <h3>Types by Inference</h3>
+        <h3>Files</h3>
 
-        <p>The code below assigns helloWorld to a string "Hello World". This code works in both JavaScript and
-          TypeScript, but in TypeScript helloWorld is specifically a string type now. This auto assignment of the
-          variable's type helps to reduces extra characters and code to make types explicit.</p>
+        <p>In this section we'll go over a quick review of all files relevant to TypeScript compilation and Jest
+          unit testing and overview what each file's purpose is.</p>
+
+        <h4>TypeScript</h4>
+
+        <ul>
+          <li><strong>app.ts</strong>: The 'main' TypeScript file, contains code that can be compiled to JavaScript</li>
+          <li><strong>package.json</strong>: A rather small yet complex and dubious json file that contains important
+          metadata about the project that can range from simple names and descriptions to script and dependency
+          declarations</li>
+          <li><strong>package-lock.json</strong>: A massive json file containing an exact tree of the node_modules
+          directory and all of it's files so that future installations are able to generate identical trees</li>
+          <li><strong>tsconfig.json</strong>: A json file that configures how TypeScript is compiled into JavaScript
+          such as what version of JavaScript to compile to, output directory, etc</li>
+        </ul>
+
+        <h4>Jest</h4>
+
+        <ul>
+          <li><strong>__tests__/test.app.ts</strong>: The test TypeScript file, contains the code that Jest will use
+          to run tests. Must be put in a __tests__ directory to be recognized by Jest</li>
+          <li><strong>jest.config.json</strong>: A json file that configures how Jest will work, such as how many
+          tests to let fail before stopping or what directory to look for files to test</li>
+          <li><strong>babel.config.js</strong>: A JavaScript file that configures how babel works which works in
+          conjunction with Jest to run tests. ngl I'm not totally sure what goes on in this file even after looking
+          at the documentation, but I do know it's needed for Jest to understand the test.app.ts file</li>
+        </ul>
+      </div>
+
+      <div class="topic" id="instructions2">
+        <h3>Build</h3>
+
+        <p>To build the project, run <span class="cmd">npm run compile</span>. The resulting files will be in the build
+          directory</p>
 
         <code class="code">
-          let helloWorld = "Hello World";
+          <div class="terminal">
+            $ npm run compile <br>
+            <br>
+            &gt hello_world@1.0.0 compile <br>
+            &gt tsc <br>
+            <br>
+            $ ls build <br>
+            __tests__  app.js     app.js.map
+          </div>
+        </code>
+
+        <p>If this step fails you may need to run the <span class="cmd">npm install</span> command to install npm into
+        the cloned repository.</p>
+      </div>
+
+      <div class="topic" id="instructions3">
+        <h3>Test</h3>
+
+        <p>This sample is setup to use the jest testing framework. Run <span class="cmd">npm test</span> to run tests.</p>
+
+        <code class="code">
+          <div class="terminal">
+            $ npm test<br>
+            <br>
+            &gt hello_world@1.0.0 test <br>
+            &gt npm run compile && npm run unit <br>
+            <br>
+            <br>
+            &gt hello_world@1.0.0 compile <br>
+            &gt tsc <br>
+            <br>
+            <br>
+            &gt hello_world@1.0.0 unit <br>
+            &gt jest <br>
+            <br>
+             PASS  __tests__/test.app.ts <br>
+              sum module <br>
+                √ returns the string hello (1 ms) <br>
+            <br>
+            Test Suites: 1 passed, 1 total <br>
+            Tests:       1 passed, 1 total <br>
+            Snapshots:   0 total <br>
+            Time:        0.498 s, estimated 1 s <br>
+            Ran all test suites.
+          </div>
         </code>
       </div>
     </div>

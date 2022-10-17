@@ -1,7 +1,8 @@
 :root {
     --softBlue: rgb(70, 120, 200); /* https://www.w3schools.com/css/css3_variables.asp */
-    --darkSoftBlue : rgb(40, 80, 130);
-    background-color: rgb(15, 15, 20);
+    --darkSoftBlue: rgb(40, 80, 130);
+    --darkDarkPurple: rgb(15, 15, 20);
+    background-color: var(--darkDarkPurple);
 }
 
 h1 {
@@ -134,13 +135,25 @@ nav #links{
     font: 12pt Arial;
 }
 
+.topic > ul > li {
+    padding: 5px 0px;
+}
+
 .topic strong{
     color: aqua;
 }
 
-/* anything inside a center tag will be centered */
-.center {
-    text-align: center;
+/* Command Line snippet formatting */
+.cmd{
+    color: lightgray;
+    font-family: "Lucida Console";
+    font-weight: bolder;
+
+    display: inline-block;
+    padding: 1px 5px;
+    border-radius: 5px;
+    background-color: var(--darkDarkPurple);
+    
 }
 
 /* Code blocks formatting */
@@ -157,6 +170,12 @@ nav #links{
 
     color: antiquewhite;
     font: 13pt "Courier New";
+}
+
+/* Terminal blocks formatting, should be inside a .code block */
+.code .terminal {
+    color: lightgray;
+    font: 13pt "Lucida Console";
 }
 
 /* Special formatting for items on the 'Hello World' webpage */
@@ -176,6 +195,11 @@ nav #links{
     box-shadow: 3px 3px black;
     top: 5px;
     left: 5px;
+}
+
+/* anything inside a center tag will be centered */
+.center {
+    text-align: center;
 }
 
 /*
