@@ -3,3 +3,6 @@ node_modules
 
 #build (Things produced when running 'npm run compile')
 build
+
+#package-lock.json
+package-lock.json
